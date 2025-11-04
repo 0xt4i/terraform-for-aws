@@ -2,6 +2,30 @@
 
 Dự án này cung cấp các cấu hình Terraform để tự động hóa việc triển khai một hạ tầng AWS bảo mật, bao gồm VPC, các EC2 instances (công khai và riêng tư), và các Security Groups (nhóm bảo mật) liên quan.
 
+```
+./
+├── .github/
+├── modules/
+│   ├── ec2_module/
+│   ├── igw_module/
+│   ├── key_pair_module/
+│   ├── nat_gw_module/
+│   ├── route_table_module/
+│   ├── security_groups_module/
+│   ├── subnet_module/
+│   └── vpc_module/
+│
+├── .gitignore
+├── README.md
+│
+├──project-1/
+|   ├──main.tf                 
+|   ├── datasources.tf
+|   ├── providers.tf   
+|   ├── variable.tf    
+|   ├── userdata.tpl   
+|   ├── windows-ssh-config.tpl
+```
 ## 📋 Yêu cầu tiên quyết
 
 Trước khi bắt đầu, hãy đảm bảo bạn đã cài đặt và cấu hình các công cụ sau:
