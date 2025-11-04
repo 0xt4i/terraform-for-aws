@@ -1,5 +1,5 @@
 //public subnet
-resource "aws_subnet" "anhtaiht_public_subnet" {
+resource "aws_subnet" "tainh_public_subnet" {
   vpc_id     = var.vpc_id
   cidr_block = var.public_subnet_cidr
 
@@ -12,7 +12,7 @@ resource "aws_subnet" "anhtaiht_public_subnet" {
 }
 
 //private subnet
-resource "aws_subnet" "anhtaiht_private_subnet" {
+resource "aws_subnet" "tainh_private_subnet" {
   vpc_id     = var.vpc_id
   cidr_block = var.private_subnet_cidr
 

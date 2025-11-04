@@ -1,5 +1,5 @@
 // Default Security Group
-resource "aws_security_group" "anhtaiht_default_sg" {
+resource "aws_security_group" "tainh_default_sg" {
   vpc_id      = var.vpc_id
   name        = "default-sg-VPC"
   description = "Default security group for VPC"
@@ -19,14 +19,14 @@ resource "aws_security_group" "anhtaiht_default_sg" {
     cidr_blocks = ["0.0.0.0/0"]
     description = "Allow all outbound traffic"
   }
-
+  
   tags = {
-    Name = "default-security-group-anhtaiht"
+    Name = "default-security-group-tainh"
   }
 }
 
 // Public EC2 security group
-resource "aws_security_group" "anhtaiht_public_sg" {
+resource "aws_security_group" "tainh_public_sg" {
   vpc_id      = var.vpc_id
   name = "Public-EC2-SG"
   description = "Allow SSH from a specific IP"
@@ -38,6 +38,14 @@ resource "aws_security_group" "anhtaiht_public_sg" {
     cidr_blocks = [var.allowed_ssh_ip]
     description = "Allow SSH access from specific IP"
   }
+  
+  ingress {
+    from_port   = 80
+    to_port     = 80
+    protocol    = "tcp"
+    cidr_blocks = ["0.0.0.0/0"]
+    description = "Allow HTTP from anywhere"
+  }
 
   egress {
     from_port   = 0
@@ -48,12 +56,12 @@ resource "aws_security_group" "anhtaiht_public_sg" {
   }
 
   tags = {
-    Name = "public-security-group-anhtaiht"
+    Name = "public-security-group-tainh"
   }
 }
 
 // Private EC2 security group
-resource "aws_security_group" "anhtaiht_private_sg" {
+resource "aws_security_group" "tainh_private_sg" {
   vpc_id      = var.vpc_id
   name = "Private-EC2-SG"
   description = "Allow SSH from the public EC2 instance"
@@ -62,7 +70,7 @@ resource "aws_security_group" "anhtaiht_private_sg" {
     from_port       = 22
     to_port         = 22
     protocol        = "tcp"
-    security_groups = [aws_security_group.anhtaiht_public_sg.id]
+    security_groups = [aws_security_group.tainh_public_sg.id]
     description     = "Allow SSH access from the public EC2 instance"
     
   }
@@ -76,6 +84,6 @@ resource "aws_security_group" "anhtaiht_private_sg" {
   }
 
   tags = {
-    Name = "private-security-group-anhtaiht"
+    Name = "private-security-group-tainh"
   }
 }

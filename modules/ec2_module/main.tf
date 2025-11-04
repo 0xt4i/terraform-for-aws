@@ -20,7 +20,7 @@ resource "aws_instance" "public_instance" {
   }
 
   tags = {
-    Name = "anhtaiht-Public-EC2-Instance"
+    Name = "tainh-Public-EC2-Instance"
   }
 
   // Provisioner to create ssh config file
@@ -29,7 +29,7 @@ resource "aws_instance" "public_instance" {
   #   command = templatefile("${var.host_os}-ssh-config.tpl", {
   #     hostname = self.public_ip,
   #     user = "ubuntu",
-  #     identityfile = "~/.ssh/anhtaihtkey"
+  #     identityfile = "~/.ssh/tainhkey"
   #   })
   #   interpreter = var.host_os == "windows" ? ["Powershell", "-Command"] : ["bash", "-c"]
   # }
@@ -57,6 +57,6 @@ resource "aws_instance" "private_instance" {
   }
 
   tags = {
-    Name = "anhtaiht-Private-EC2-Instance"
+    Name = "tainh-Private-EC2-Instance"
   }
 }

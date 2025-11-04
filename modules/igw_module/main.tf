@@ -1,4 +1,4 @@
-resource "aws_internet_gateway" "anhtaiht_igw" {
+resource "aws_internet_gateway" "tainh_igw" {
   vpc_id = var.vpc_id
 
   tags = {
